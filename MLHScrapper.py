@@ -41,9 +41,13 @@ new_list = []
 for d_dict in l:
     inner_list = list()
     for k, v in d_dict.items():
+        if v == None:
+            print("null value found!")
         inner_list.append(v)
     new_list.append(tuple(inner_list))
-print(new_list)
+# print(new_list)
+print("length of new list ", len(new_list))
+# for i in range()
 
 import MySQLdb as my
 db = my.connect(host="webscrapper-instance.c2ay3hczfmtj.us-east-2.rds.amazonaws.com",
@@ -52,7 +56,7 @@ passwd="password",
 db="mlh_data"
 )
 
-sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"
+sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"""
 
 cursor = db.cursor()
 number_of_rows = cursor.executemany(sql, l)
