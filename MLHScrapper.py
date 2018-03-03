@@ -29,7 +29,7 @@ for item in all:
       d["endDate"]=item.find("meta",{"itemprop":"endDate"})["content"]
   except:
       d["endDate"]=None
-  print(d["endDate"])
+  # print(d["endDate"])
   try:
       d["Locality"]=item.find("span",{"itemprop":"addressLocality"}).text
   except:
@@ -59,11 +59,12 @@ user="admin_webscrap",
 passwd="password",
 db="mlh_data"
 )
-
-sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"""
-
 cursor = db.cursor()
-number_of_rows = cursor.executemany(sql, new_list)
+
+for l in new_list:
+    sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)""" % \
+        (l[0], l[1], l[2], l[3], l[4])
+    number_of_rows = cursor.execute(sql, new_list)
 
 db.commit()
 db.close()
