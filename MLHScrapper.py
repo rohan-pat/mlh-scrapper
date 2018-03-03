@@ -17,10 +17,12 @@ for item in all:
   d= {}
   try:
       d["Name"]=item.find("h3",{"itemprop":"name"}).text
+      print(type(d["Name"]))
   except:
       d["Name"]=None
   try:
       d["startDate"]=item.find("meta",{"itemprop":"startDate"})["content"]
+      print(type(d["startDate"]))
   except:
       d["startDate"]=None
   try:
@@ -59,7 +61,7 @@ db="mlh_data"
 sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"""
 
 cursor = db.cursor()
-number_of_rows = cursor.executemany(sql, l)
+number_of_rows = cursor.executemany(sql, new_list)
 
 db.commit()
 db.close()
