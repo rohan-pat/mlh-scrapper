@@ -37,7 +37,18 @@ for item in all:
       d["State"]=None
   l.append(d)
 
-import MySQLdb as my 
+import MySQLdb as my
+db = my.connect(host="http://webscrapper-instance.c2ay3hczfmtj.us-east-2.rds.amazonaws.com/",
+user="admin_webscrap",
+passwd="password",
+db="mlh_data"
+)
+
+sql = "insert into hackathon(Name, startDate, endDate, City, State)
+VALUES(%s, %s, %s, %s, %s)"
+
+cursor = db.cursor()
+number_of_rows = cursor.executemany(sql, l)
 
 
 
