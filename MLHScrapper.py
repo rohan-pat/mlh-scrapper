@@ -14,7 +14,7 @@ l=[]
 #soup=BeautifulSoup(c,"html.parser")
 all=soup.find_all("div",{"class":"event-wrapper"})
 for item in all:
-  d= {}
+  d= OrderedDict()
   try:
       d["Name"]=item.find("h3",{"itemprop":"name"}).text
       # print(type(d["Name"]))
