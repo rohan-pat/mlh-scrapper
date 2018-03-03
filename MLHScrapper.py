@@ -38,7 +38,7 @@ for item in all:
   l.append(d)
 
 import MySQLdb as my
-db = my.connect(host="webscrapper-instance.c2ay3hczfmtj.us-east-2.rds.amazonaws.com/",
+db = my.connect(host="webscrapper-instance.c2ay3hczfmtj.us-east-2.rds.amazonaws.com",
 user="admin_webscrap",
 passwd="password",
 db="mlh_data"
@@ -48,6 +48,9 @@ sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %
 
 cursor = db.cursor()
 number_of_rows = cursor.executemany(sql, l)
+
+db.commit()
+db.close()
 
 
 
