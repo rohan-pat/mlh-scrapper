@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from collections import OrderedDict
 
 r=requests.get("https://mlh.io/seasons/na-2018/events")
 c=r.content
@@ -62,7 +63,7 @@ db="mlh_data"
 cursor = db.cursor()
 
 # for l in new_list:
-sql = """insert into hackathon(startDate, endDate, City, Name, State) VALUES(%s, %s, %s, %s, %s)"""
+sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"""
 number_of_rows = cursor.executemany(sql, new_list)
 
 db.commit()
