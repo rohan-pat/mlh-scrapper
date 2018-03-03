@@ -37,7 +37,7 @@ for item in all:
       d["State"]=None
   l.append(d)
 
-import mysqldb as my 
+import MySQLdb as my 
 
 
 
