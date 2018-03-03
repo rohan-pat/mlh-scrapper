@@ -37,6 +37,14 @@ for item in all:
       d["State"]=None
   l.append(d)
 
+new_list = []
+for d_dict in l:
+    inner_list = list()
+    for k, v in d_dict.items():
+        inner_list.append(v)
+    new_list.append(tuple(inner_list))
+print(new_list)
+
 import MySQLdb as my
 db = my.connect(host="webscrapper-instance.c2ay3hczfmtj.us-east-2.rds.amazonaws.com",
 user="admin_webscrap",
@@ -44,7 +52,7 @@ passwd="password",
 db="mlh_data"
 )
 
-sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"
+sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %d, %d, %s, %s)"
 
 cursor = db.cursor()
 number_of_rows = cursor.executemany(sql, l)
