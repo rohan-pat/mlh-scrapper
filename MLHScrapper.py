@@ -17,7 +17,7 @@ for item in all:
   d= {}
   try:
       d["Name"]=item.find("h3",{"itemprop":"name"}).text
-      print(type(d["Name"]))
+      # print(type(d["Name"]))
   except:
       d["Name"]=None
   try:
@@ -63,7 +63,7 @@ cursor = db.cursor()
 
 for l in new_list:
     sql = """insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)""" % \
-        (l[0], l[1], l[2], l[3], l[4])
+        (l[0], l[1], l[2], l[3], l[4],)
     number_of_rows = cursor.execute(sql, new_list)
 
 db.commit()
