@@ -37,7 +37,8 @@ for item in all:
       d["State"]=None
   l.append(d)
 
-import mysql.connector import MySQLConnection, Error
+import mysql.connector 
+import MySQLConnection, Error
 
 
 #df=pandas.DataFrame(l)
