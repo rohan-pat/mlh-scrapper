@@ -29,6 +29,7 @@ for item in all:
       d["endDate"]=item.find("meta",{"itemprop":"endDate"})["content"]
   except:
       d["endDate"]=None
+  print(d["endDate"])
   try:
       d["Locality"]=item.find("span",{"itemprop":"addressLocality"}).text
   except:
