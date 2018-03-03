@@ -22,9 +22,9 @@ for item in all:
       d["Name"]=None
   try:
       d["startDate"]=item.find("meta",{"itemprop":"startDate"})["content"]
-      print(type(d["startDate"]))
   except:
       d["startDate"]=None
+  # print(d["startDate"])
   try:
       d["endDate"]=item.find("meta",{"itemprop":"endDate"})["content"]
   except:
@@ -49,6 +49,7 @@ for d_dict in l:
     new_list.append(tuple(inner_list))
 # print(new_list)
 print("length of new list ", len(new_list))
+print("sample tuple is ", new_list[1])
 # for i in range()
 
 import MySQLdb as my
