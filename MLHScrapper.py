@@ -52,7 +52,7 @@ passwd="password",
 db="mlh_data"
 )
 
-sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %d, %d, %s, %s)"
+sql = "insert into hackathon(Name, startDate, endDate, City, State) VALUES(%s, %s, %s, %s, %s)"
 
 cursor = db.cursor()
 number_of_rows = cursor.executemany(sql, l)
