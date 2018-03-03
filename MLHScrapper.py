@@ -62,8 +62,7 @@ db="mlh_data"
 cursor = db.cursor()
 
 # for l in new_list:
-sql = """insert into hackathon(startDate, endDate, City, Name, State) VALUES(%s, %s, %s, %s, %s)""" % \
-    # (l[4], l[0], l[1], l[2], l[3],)
+sql = """insert into hackathon(startDate, endDate, City, Name, State) VALUES(%s, %s, %s, %s, %s)"""
 number_of_rows = cursor.executemany(sql, new_list)
 
 db.commit()
