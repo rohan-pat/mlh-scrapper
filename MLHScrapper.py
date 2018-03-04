@@ -7,6 +7,19 @@ c=r.content
 soup=BeautifulSoup(c,"html.parser")
 #pg_nr=soup.find_all("a",{"class":"Page"})[-1].text
 
+states = dict()
+with open('us_states.txt', 'r') as f:
+    no = 1
+    while no <= 64:
+        x = f.readline()
+        x = x.strip().split(",")
+        x[0] = x[0].strip()
+        x[1] = x[1].strip()
+        states[x[1]] = x[0]
+        no += 1
+
+print(states)
+
 l=[]
 #base_url= "https://mlh.io/"
 #for page in range(0,int(pg_nr)*10,10):
@@ -47,6 +60,8 @@ for d_dict in l:
     for k, v in d_dict.items():
         if v == None:
             print("null value found!")
+        if v in states:
+            v = states[v]
         inner_list.append(v)
     new_list.append(tuple(inner_list))
 # print(new_list)
